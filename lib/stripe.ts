@@ -10,7 +10,7 @@ export const StripeHandler = async (userId: string) => {
     const session = await stripe.checkout.sessions.create({
       line_items: [
         {
-          price: "price_1OkLczGSCC3XaWl1NaWjbeDn",
+          price: "price_1PbyXOGSCC3XaWl1qQWfB8Ns",
           quantity: 1,
         },
       ],
@@ -18,8 +18,8 @@ export const StripeHandler = async (userId: string) => {
         userId: userId,
       },
       mode: "payment",
-      success_url: `${process.env.NEXT_PUBLIC_SERVER_URL}`,
-      cancel_url: `${process.env.NEXT_PUBLIC_SERVER_URL}`,
+      success_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/dashboard`,
+      cancel_url: `${process.env.NEXT_PUBLIC_SERVER_URL}/dashboard`,
     });
 
     redirect(session.url!);
